@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Contacto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+<form action="" method="post" th:object="${contacto}">
+  <h3 class="text-center mb-4"> [[${contacto.id ne null ? 'Editar Contacto' : 'Registro de Contacto'}]]</h3>
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre:</label>
+    <input id="nombre" class="form-control" type="text" placeholder="Digite su Nombre" th:field="*{nombre}">
+    <span class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email:</label>
+    <input id="email" class="form-control" type="email" placeholder="Digite su Email" th:field="*{email}">
+    <span class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+  </div>
+  <div class="mb-3">
+    <label for="celular" class="form-label">Celular:</label>
+    <input id="celular" class="form-control" type="text" placeholder="Digite su Celular" th:field="*{celular}">
+    <span class="text-danger" th:if="${#fields.hasErrors('celular')}" th:errors="*{celular}"></span>
+  </div>
+  <div class="mb-3">
+    <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+    <input id="fechaNacimiento"  class="form-control" type="date" th:field="*{fechaNacimiento}">
+    <span class="text-danger" th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></span>
+  </div>
+  <button class="btn btn-primary" type="submit"> Guardar</button>
+  <a href="/" class="link-underline-danger">Cancelar</a>
+</form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
