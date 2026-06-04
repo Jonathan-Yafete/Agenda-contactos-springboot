@@ -1,0 +1,22 @@
+name: Java CI con Maven
+
+on:
+  push:
+    branches: [ "main" ] # Se activa cada vez que subes cambios a main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Usa un servidor Linux en la nube
+
+    steps:
+      - uses: actions/checkout@v4 # Descarga tu código
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Compilar y Ejecutar Pruebas Unitarias
+        run: mvn -B test # Ejecuta tus pruebas de JUnit 5 de forma automática

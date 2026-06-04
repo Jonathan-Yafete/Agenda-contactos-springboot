@@ -83,6 +83,12 @@
 			<version>RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope> <!-- Indica que SOLO se usará en etapa de pruebas -->
+		</dependency>
 	</dependencies>
 
 	<build>
