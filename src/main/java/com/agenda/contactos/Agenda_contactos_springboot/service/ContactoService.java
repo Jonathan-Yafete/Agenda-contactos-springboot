@@ -1,5 +1,6 @@
 package com.agenda.contactos.Agenda_contactos_springboot.service;
 
+import com.agenda.contactos.Agenda_contactos_springboot.dto.ContactoDTO;
 import com.agenda.contactos.Agenda_contactos_springboot.modelo.Contacto;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface ContactoService {
     Contacto guardar(Contacto contacto);
     Optional<Contacto> buscarPorId(Integer id);
     void eliminar(Integer id);
+
+    Contacto guardarDesdeDto(ContactoDTO dto);
 }

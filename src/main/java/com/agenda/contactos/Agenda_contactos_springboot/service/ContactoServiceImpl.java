@@ -1,11 +1,14 @@
 package com.agenda.contactos.Agenda_contactos_springboot.service;
 
-import com.agenda.contactos.Agenda_contactos_springboot.modelo.Contacto;
+import com.agenda.contactos.Agenda_contactos_springboot.dto.ContactoDTO;
+import com.agenda.contactos.Agenda_contactos_springboot.modelo.Contacto; // ¡Corregido con _ !
 import com.agenda.contactos.Agenda_contactos_springboot.repository.ContactoRespository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class ContactoServiceImpl implements  ContactoService{
     private final ContactoRespository contactoRespository;
 
@@ -31,5 +34,18 @@ public class ContactoServiceImpl implements  ContactoService{
     public void eliminar(Integer id) {
         contactoRespository.deleteById(id);
 
+    }
+
+    @Override
+    public Contacto guardarDesdeDto(ContactoDTO dto) {
+        // Convertimos los datos del DTO a la Entidad JPA real
+        Contacto contactoEntity = new Contacto();
+        contactoEntity.setNombre(dto.getNombre());
+        contactoEntity.setCelular(dto.getCelular());
+        contactoEntity.setEmail(dto.getEmail());
+        contactoEntity.setFechaNacimiento(dto.getFechaNacimiento());
+
+        // Guardamos de forma persistente en MySQL
+        return contactoRespository.save(contactoEntity);
     }
 }
